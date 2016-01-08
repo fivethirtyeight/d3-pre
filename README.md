@@ -2,8 +2,8 @@
 pre-render your d3 visualizations.
 
 Serving up a page with inline SVG elements can give significant
-performance benefits over creating them after pageload.
-Especially with respect to perceived load time.
+performance benefits over creating them after pageload,
+especially with respect to perceived load time.
 
 The idea behind this library is that you run your d3 script locally on a
 fake (jsdom) DOM, allow d3 to build the initial `SVG`, and then attach event listeners
