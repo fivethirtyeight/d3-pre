@@ -27,9 +27,9 @@ var Prerender = require('@fivethirtyeight/d3-pre');
 var prerender = Prerender(d3);
 
 
-// Then, when you start drawing svg call prerender.start()
+// Then, when you start drawing svg call `prerender.start()``
 // this modifies some d3 functions to allow it to be
-// aware of svg's that have been pre-rendered to the page.
+// aware of SVGs that have been pre-rendered to the page.
 prerender.start();
 
 /*
@@ -44,8 +44,8 @@ prerender.start();
 */
 
 // If you ever want to go back to the unmodified d3
-// just call prerender.stop()
-// This is optional and usually not necessary
+// just call `prerender.stop()``
+// This is optional and usually not necessary.
 prerender.stop();
 
 ```
