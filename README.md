@@ -17,6 +17,8 @@ There are **two** things that you need to do to use this library.
 ### 1. Include d3-pre in your javascript
 
 ```js
+var d3 = require('d3');
+
 // Require the library and give it a reference to d3
 var Prerender = require('@fivethirtyeight/d3-pre');
 var prerender = Prerender(d3);
