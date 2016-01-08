@@ -37,9 +37,6 @@ prerender.start();
  *      etc. etc.
 */
 
-
-
-
 // If you ever want to go back to the unmodified d3
 // just call
 prerender.stop();
