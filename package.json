@@ -1,0 +1,13 @@
+{
+  "name": "d3-pre",
+  "version": "1.0.0",
+  "description": "Prerender SVGs with D3",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
