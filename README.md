@@ -62,6 +62,8 @@ $ d3-pre ./path/to/index.html
 This will modify the `index.html` file, running any scripts that are included,
 letting these scripts modify the DOM and saving the modifications.
 
+[See the repo for the command line tool](https://github.com/fivethirtyeight/d3-pre-cli)
+
 #### Gulp example
 
 Install the gulp plugin:
@@ -72,6 +74,10 @@ $ npm install @fivethirtyeight/gulp-d3-pre
 Create a gulp task:
 
 ```js
+var gulp = require('gulp');
+var d3Pre = require('@fivethirtyeight/gulp-d3-pre');
+
+
 gulp.task('prerender-svgs', function() {
   gulp.src('./public/index.html')
     .pipe(d3Pre())
@@ -80,3 +86,5 @@ gulp.task('prerender-svgs', function() {
 ```
 Again, this will modify the file in-place, saving any DOM modifications that
 the javascript made.
+
+[See the repo for the gulp plugin](https://github.com/fivethirtyeight/gulp-d3-pre)
