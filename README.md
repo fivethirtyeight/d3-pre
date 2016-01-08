@@ -1,5 +1,5 @@
 # d3-pre
-pre-render your d3 visualizations.
+Pre-render your d3 visualizations.
 
 Serving up a page with inline SVG elements can give significant
 performance benefits over creating them after pageload,
