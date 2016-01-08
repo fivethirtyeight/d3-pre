@@ -57,7 +57,7 @@ $ npm install @fivethirtyeight/gulp-d3-pre
 
 Create a gulp task:
 
-```
+```js
 gulp.task('prerender-svgs', function() {
   gulp.src('./public/index.html')
     .pipe(d3Pre())
