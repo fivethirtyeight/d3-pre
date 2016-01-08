@@ -4,10 +4,12 @@
   "description": "Prerender SVGs with D3",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "semistandard"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "semistandard": "^7.0.4"
   }
 }
