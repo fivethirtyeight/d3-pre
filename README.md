@@ -10,6 +10,9 @@ fake (jsdom) DOM, allow d3 to build the initial `SVG`, and then attach event lis
 and interactivity in the browser. The cool thing is that this library allows you to run
 exactly the same code locally and in the browser.
 
+See a simple example of this concept in action: [with pre-rendering](https://s.538.io/experiments/svg-prerender/prerendered/)
+and [without pre-rendering](https://s.538.io/experiments/svg-prerender/standard/).
+
 ## Usage
 
 There are **two** things that you need to do to use this library.
