@@ -26,6 +26,19 @@ var prerender = Prerender(d3);
 // advantage of svg's that have been pre-rendered to the page.
 prerender.start();
 
+/*
+ * normal d3 code goes here
+ * d3.select('body')
+ *   .append('svg')
+ *      .data(data)
+ *   .enter()
+ *      .append('rect')
+ *      .on('click', clickhandler)
+ *      etc. etc.
+*/
+
+
+
 
 // If you ever want to go back to the unmodified d3
 // just call
