@@ -29,7 +29,7 @@ var prerender = Prerender(d3);
 
 // Then, when you start drawing svg call `prerender.start()`
 // this modifies some d3 functions to allow it to be
-// aware of SVGs that have been pre-rendered to the page.
+// aware of SVGs that already exist on the page.
 prerender.start();
 
 /*
