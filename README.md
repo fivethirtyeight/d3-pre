@@ -1,10 +1,17 @@
 # d3-pre
-prerender your d3 visualizations
+pre-render your d3 visualizations.
 
+Serving up a page with svgs elements already created can give significant
+performance benefits, especially w.r.t perceived load time.
+
+The idea behind this library is that you run your d3 script locally on a
+fake (jsdom) DOM, allow d3 to build the initial `SVG`, and then attach event listeners
+and interactivity in the browser. The cool thing is that this library allows you to run
+exactly the same code locally and in the browser.
 
 ## Usage
 
-There are *two* things that you need to do to use this library.
+There are **two** things that you need to do to use this library.
 
 ### 1. Include d3-pre in your javascript
 
