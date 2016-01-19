@@ -1,5 +1,5 @@
 # d3-pre
-pre-render your d3 visualizations.
+Pre-render your d3 visualizations.
 
 Serving up a page with inline SVG elements can give significant
 performance benefits over creating them after pageload,
@@ -11,7 +11,7 @@ and interactivity in the browser. The cool thing is that this library allows you
 exactly the same code locally and in the browser.
 
 See a simple example of this concept in action: [with pre-rendering](https://s.538.io/experiments/svg-prerender/prerendered/)
-and [without pre-rendering](https://s.538.io/experiments/svg-prerender/standard/).
+and [without pre-rendering](https://s.538.io/experiments/svg-prerender/standard/) (refresh the pages to see the difference in loading). 
 
 ## Usage
 
@@ -29,7 +29,7 @@ var prerender = Prerender(d3);
 
 // Then, when you start drawing svg call `prerender.start()`
 // this modifies some d3 functions to allow it to be
-// aware of SVGs that have been pre-rendered to the page.
+// aware of SVGs that already exist on the page.
 prerender.start();
 
 /*
