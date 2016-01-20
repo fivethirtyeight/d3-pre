@@ -7,7 +7,6 @@ var setD3 = function (_d3) {
 
 var start = function () {
 
-  console.log(d3);
   function d3_selection_creator (name) {
     return typeof name === 'function' ? name
         : (name = d3.ns.qualify(name)).local ? function () { return this.ownerDocument.createElementNS(name.space, name.local); }
