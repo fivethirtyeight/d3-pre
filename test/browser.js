@@ -213,10 +213,10 @@ describe('In browser', function () {
       .enter()
       .append('g')
       .attr('class', 'outer')
-      .attr('i', function (d) { return d; });
-      // .each(function (d, i) {
-      //   expect(d).to.be(outerData[i]);
-      // });
+      .attr('i', function (d) { return d; })
+      .each(function (d, i) {
+        expect(d).to.be(outerData[i]);
+      });
 
     groups
       .selectAll('g.inner')
@@ -224,16 +224,16 @@ describe('In browser', function () {
       .enter()
       .append('g')
       .attr('class', 'inner')
-      // .each(function (d, i) {
-      //   expect(d).to.be(innerData[i]);
-      // })
+      .each(function (d, i) {
+        expect(d).to.be(innerData[i]);
+      })
       .selectAll('rect')
       .data(innerInnerData)
       .enter()
-      .append('rect');
-      // .each(function (d, i) {
-      //   expect(d).to.be(innerInnerData[i]);
-      // });
+      .append('rect')
+      .each(function (d, i) {
+        expect(d).to.be(innerInnerData[i]);
+      });
 
     var results = d3.select('#test-container').html();
     expect(results).to.be(inner);
