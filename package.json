@@ -1,6 +1,6 @@
 {
   "name": "@fivethirtyeight/d3-pre",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Prerender SVGs with D3",
   "main": "index.js",
   "scripts": {
