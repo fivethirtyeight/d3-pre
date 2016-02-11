@@ -1,4 +1,5 @@
 var d3;
+var dataString = 'data-pid';
 
 var setD3 = function (_d3) {
   d3 = _d3;
@@ -21,7 +22,7 @@ var start = function () {
     return this.select(function () {
       appendCount++;
       if (isEmpty === -1) {
-        var selection = d3.select(ogName + '[data-dpre-id="' + appendCount + '"]');
+        var selection = d3.select(ogName + '[' + dataString + '="' + appendCount + '"]');
         if (selection.empty()) {
           isEmpty = 1;
         } else {
@@ -31,10 +32,10 @@ var start = function () {
 
       if (isEmpty === 1) {
         var c = this.appendChild(name.apply(this, arguments));
-        return d3.select(c).attr('data-dpre-id', appendCount).node();
+        return d3.select(c).attr(dataString, appendCount).node();
       }
 
-      return d3.select('[data-dpre-id="' + appendCount + '"]').node();
+      return d3.select('[' + dataString + '="' + appendCount + '"]').node();
     });
   };
 
