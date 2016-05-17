@@ -13,6 +13,17 @@ exactly the same code locally and in the browser.
 See a simple example of this concept in action: [with pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/prerendered/)
 and [without pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/standard/) (refresh the pages to see the difference in loading). 
 
+## Examples
+
+* [Streamgraph](http://fivethirtyeight.github.io/d3-pre/examples/streamgraph/) ([code]())
+
+
+## Installation
+
+```
+npm install --save d3-pre
+```
+
 ## Usage
 
 There are **two** things that you need to do to use this library.
