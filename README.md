@@ -6,16 +6,17 @@ performance benefits over creating them after pageload,
 especially with respect to perceived load time.
 
 The idea behind this library is that you run your d3 script locally on a
-fake (jsdom) DOM, allow d3 to build the initial `SVG`, and then attach event listeners
+headless browser, allow d3 to build the initial `SVG`, and then attach event listeners
 and interactivity in the browser. The cool thing is that this library allows you to run
 exactly the same code locally and in the browser.
 
 See a simple example of this concept in action: [with pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/prerendered/)
-and [without pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/standard/) (refresh the pages to see the difference in loading). 
+and [without pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/standard/) (refresh the pages to see the difference in loading).
 
 ## Examples
 
-* [Streamgraph](http://fivethirtyeight.github.io/d3-pre/examples/streamgraph/) ([code]())
+* [Axis Pan+Zoom](http://fivethirtyeight.github.io/d3-pre/examples/axes/) ([code](./examples/axis.js))
+* [Streamgraph](http://fivethirtyeight.github.io/d3-pre/examples/streamgraph/) ([code](./examples/stream.js))
 
 
 ## Installation
@@ -34,7 +35,7 @@ There are **two** things that you need to do to use this library.
 var d3 = require('d3');
 
 // Require the library and give it a reference to d3
-var Prerender = require('@fivethirtyeight/d3-pre');
+var Prerender = require('d3-pre');
 var prerender = Prerender(d3);
 
 
@@ -69,7 +70,7 @@ This can either be done via a build task (like gulp), or on the command line.
 #### Command line example
 
 ```
-$ npm install -g @fivethirtyeight/d3-pre-cli
+$ npm install -g d3-pre-cli
 $ d3-pre ./path/to/index.html
 ```
 
@@ -82,14 +83,14 @@ letting these scripts modify the DOM and saving the modifications.
 
 Install the gulp plugin:
 ```
-$ npm install @fivethirtyeight/gulp-d3-pre
+$ npm install gulp-d3-pre
 ```
 
 Create a gulp task:
 
 ```js
 var gulp = require('gulp');
-var d3Pre = require('@fivethirtyeight/gulp-d3-pre');
+var d3Pre = require('gulp-d3-pre');
 
 
 gulp.task('prerender-svgs', function() {
