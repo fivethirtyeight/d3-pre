@@ -15,7 +15,7 @@
     </header>
     <div class="container">
       <h1>
-        Axis Pan+Zoom 
+        Axis Pan+Zoom
         example from <a href="http://bl.ocks.org/mbostock/3892919">http://bl.ocks.org/mbostock/3892919</a>
       </h1>
       <div id="interactive"><svg data-pid="0" viewbox=" 0 0 960 500"><g data-pid="1" transform="translate(40,20)"><rect data-pid="2" width="900" height="450"/><g data-pid="3" class="x axis" transform="translate(0,450)"><g class="tick" transform="translate(50,0)" style="opacity: 1;"><line data-pid="5" y2="-450" x2="0"/><text data-pid="14" dy=".71em" y="3" x="0" style="text-anchor: middle;">-400</text></g><g class="tick" transform="translate(150,0)" style="opacity: 1;"><line data-pid="6" y2="-450" x2="0"/><text data-pid="15" dy=".71em" y="3" x="0" style="text-anchor: middle;">-300</text></g><g class="tick" transform="translate(250,0)" style="opacity: 1;"><line data-pid="7" y2="-450" x2="0"/><text data-pid="16" dy=".71em" y="3" x="0" style="text-anchor: middle;">-200</text></g><g class="tick" transform="translate(350,0)" style="opacity: 1;"><line data-pid="8" y2="-450" x2="0"/><text data-pid="17" dy=".71em" y="3" x="0" style="text-anchor: middle;">-100</text></g><g class="tick" transform="translate(450,0)" style="opacity: 1;"><line data-pid="9" y2="-450" x2="0"/><text data-pid="18" dy=".71em" y="3" x="0" style="text-anchor: middle;">0</text></g><g class="tick" transform="translate(550,0)" style="opacity: 1;"><line data-pid="10" y2="-450" x2="0"/><text data-pid="19" dy=".71em" y="3" x="0" style="text-anchor: middle;">100</text></g><g class="tick" transform="translate(650,0)" style="opacity: 1;"><line data-pid="11" y2="-450" x2="0"/><text data-pid="20" dy=".71em" y="3" x="0" style="text-anchor: middle;">200</text></g><g class="tick" transform="translate(750,0)" style="opacity: 1;"><line data-pid="12" y2="-450" x2="0"/><text data-pid="21" dy=".71em" y="3" x="0" style="text-anchor: middle;">300</text></g><g class="tick" transform="translate(850,0)" style="opacity: 1;"><line data-pid="13" y2="-450" x2="0"/><text data-pid="22" dy=".71em" y="3" x="0" style="text-anchor: middle;">400</text></g><path data-pid="4" class="domain" d="M0,-450V0H900V-450"/></g><g data-pid="23" class="y axis"><g class="tick" transform="translate(0,425)" style="opacity: 1;"><line data-pid="25" x2="900" y2="0"/><text data-pid="30" dy=".32em" x="-3" y="0" style="text-anchor: end;">-200</text></g><g class="tick" transform="translate(0,325)" style="opacity: 1;"><line data-pid="26" x2="900" y2="0"/><text data-pid="31" dy=".32em" x="-3" y="0" style="text-anchor: end;">-100</text></g><g class="tick" transform="translate(0,225)" style="opacity: 1;"><line data-pid="27" x2="900" y2="0"/><text data-pid="32" dy=".32em" x="-3" y="0" style="text-anchor: end;">0</text></g><g class="tick" transform="translate(0,125)" style="opacity: 1;"><line data-pid="28" x2="900" y2="0"/><text data-pid="33" dy=".32em" x="-3" y="0" style="text-anchor: end;">100</text></g><g class="tick" transform="translate(0,25.00000000000001)" style="opacity: 1;"><line data-pid="29" x2="900" y2="0"/><text data-pid="34" dy=".32em" x="-3" y="0" style="text-anchor: end;">200</text></g><path data-pid="24" class="domain" d="M900,0H0V450H900"/></g></g></svg></div>
@@ -25,7 +25,7 @@
 
 <span class="hljs-keyword">var</span> d3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;d3&apos;</span>);
 <span class="hljs-comment">// Require the library and give it a reference to d3</span>
-<span class="hljs-keyword">var</span> Prerender = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@fivethirtyeight/d3-pre&apos;</span>);
+<span class="hljs-keyword">var</span> Prerender = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;d3-pre&apos;</span>);
 <span class="hljs-keyword">var</span> prerender = Prerender(d3);
 
 
@@ -93,5 +93,5 @@ svg.call(zoom);
     </div>
     <script src="./js/common.js" defer="defer"></script>
     <script src="./js/bundle.js" defer="defer"></script>
-  
+
 </body></html>
