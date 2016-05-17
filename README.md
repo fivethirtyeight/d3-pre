@@ -11,7 +11,7 @@ and interactivity in the browser. The cool thing is that this library allows you
 exactly the same code locally and in the browser.
 
 See a simple example of this concept in action: [with pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/prerendered/)
-and [without pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/prerendered/standard/) (refresh the pages to see the difference in loading). 
+and [without pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/standard/) (refresh the pages to see the difference in loading). 
 
 ## Usage
 
