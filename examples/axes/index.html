@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>d3-pre | FiveThirtyEight</title>
+    <link rel="stylesheet" href="./css/app.css">
+  </head>
+  <body>
+    <div id="ad"></div>
+    <header class="vertical-">
+      <div class="header-wrapper"><a href="http://fivethirtyeight.com" class="logo"><img width="163" height="20" alt="FiveThirtyEight" src="https://projects.fivethirtyeight.com/shared/logo-masthead-narrow.svg"></a>
+        <nav></nav>
+      </div>
+    </header>
+    <div class="container">
+      <h1>
+        Axis Pan+Zoom 
+        example from <a href="http://bl.ocks.org/mbostock/3892919">http://bl.ocks.org/mbostock/3892919</a>
+      </h1>
+      <div id="interactive"><svg data-pid="0" viewbox=" 0 0 960 500"><g data-pid="1" transform="translate(40,20)"><rect data-pid="2" width="900" height="450"/><g data-pid="3" class="x axis" transform="translate(0,450)"><g class="tick" transform="translate(50,0)" style="opacity: 1;"><line data-pid="5" y2="-450" x2="0"/><text data-pid="14" dy=".71em" y="3" x="0" style="text-anchor: middle;">-400</text></g><g class="tick" transform="translate(150,0)" style="opacity: 1;"><line data-pid="6" y2="-450" x2="0"/><text data-pid="15" dy=".71em" y="3" x="0" style="text-anchor: middle;">-300</text></g><g class="tick" transform="translate(250,0)" style="opacity: 1;"><line data-pid="7" y2="-450" x2="0"/><text data-pid="16" dy=".71em" y="3" x="0" style="text-anchor: middle;">-200</text></g><g class="tick" transform="translate(350,0)" style="opacity: 1;"><line data-pid="8" y2="-450" x2="0"/><text data-pid="17" dy=".71em" y="3" x="0" style="text-anchor: middle;">-100</text></g><g class="tick" transform="translate(450,0)" style="opacity: 1;"><line data-pid="9" y2="-450" x2="0"/><text data-pid="18" dy=".71em" y="3" x="0" style="text-anchor: middle;">0</text></g><g class="tick" transform="translate(550,0)" style="opacity: 1;"><line data-pid="10" y2="-450" x2="0"/><text data-pid="19" dy=".71em" y="3" x="0" style="text-anchor: middle;">100</text></g><g class="tick" transform="translate(650,0)" style="opacity: 1;"><line data-pid="11" y2="-450" x2="0"/><text data-pid="20" dy=".71em" y="3" x="0" style="text-anchor: middle;">200</text></g><g class="tick" transform="translate(750,0)" style="opacity: 1;"><line data-pid="12" y2="-450" x2="0"/><text data-pid="21" dy=".71em" y="3" x="0" style="text-anchor: middle;">300</text></g><g class="tick" transform="translate(850,0)" style="opacity: 1;"><line data-pid="13" y2="-450" x2="0"/><text data-pid="22" dy=".71em" y="3" x="0" style="text-anchor: middle;">400</text></g><path data-pid="4" class="domain" d="M0,-450V0H900V-450"/></g><g data-pid="23" class="y axis"><g class="tick" transform="translate(0,425)" style="opacity: 1;"><line data-pid="25" x2="900" y2="0"/><text data-pid="30" dy=".32em" x="-3" y="0" style="text-anchor: end;">-200</text></g><g class="tick" transform="translate(0,325)" style="opacity: 1;"><line data-pid="26" x2="900" y2="0"/><text data-pid="31" dy=".32em" x="-3" y="0" style="text-anchor: end;">-100</text></g><g class="tick" transform="translate(0,225)" style="opacity: 1;"><line data-pid="27" x2="900" y2="0"/><text data-pid="32" dy=".32em" x="-3" y="0" style="text-anchor: end;">0</text></g><g class="tick" transform="translate(0,125)" style="opacity: 1;"><line data-pid="28" x2="900" y2="0"/><text data-pid="33" dy=".32em" x="-3" y="0" style="text-anchor: end;">100</text></g><g class="tick" transform="translate(0,25.00000000000001)" style="opacity: 1;"><line data-pid="29" x2="900" y2="0"/><text data-pid="34" dy=".32em" x="-3" y="0" style="text-anchor: end;">200</text></g><path data-pid="24" class="domain" d="M900,0H0V450H900"/></g></g></svg></div>
+    </div>
+    <div class="container">
+      <pre><code class="hljs javascript"><span class="hljs-meta">&apos;use strict&apos;</span>;
+
+<span class="hljs-keyword">var</span> d3 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;d3&apos;</span>);
+<span class="hljs-comment">// Require the library and give it a reference to d3</span>
+<span class="hljs-keyword">var</span> Prerender = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@fivethirtyeight/d3-pre&apos;</span>);
+<span class="hljs-keyword">var</span> prerender = Prerender(d3);
+
+
+<span class="hljs-comment">// Then, when you start drawing svg call `prerender.start()`</span>
+<span class="hljs-comment">// this modifies some d3 functions to allow it to be</span>
+<span class="hljs-comment">// aware of SVGs that already exist on the page.</span>
+prerender.start();
+
+
+<span class="hljs-keyword">var</span> margin = {top: <span class="hljs-number">20</span>, right: <span class="hljs-number">20</span>, bottom: <span class="hljs-number">30</span>, left: <span class="hljs-number">40</span>},
+    width = <span class="hljs-number">960</span> - margin.left - margin.right,
+    height = <span class="hljs-number">500</span> - margin.top - margin.bottom;
+
+<span class="hljs-keyword">var</span> x = d3.scale.linear()
+    .domain([-width / <span class="hljs-number">2</span>, width / <span class="hljs-number">2</span>])
+    .range([<span class="hljs-number">0</span>, width]);
+
+<span class="hljs-keyword">var</span> y = d3.scale.linear()
+    .domain([-height / <span class="hljs-number">2</span>, height / <span class="hljs-number">2</span>])
+    .range([height, <span class="hljs-number">0</span>]);
+
+<span class="hljs-keyword">var</span> xAxis = d3.svg.axis()
+    .scale(x)
+    .orient(<span class="hljs-string">&quot;bottom&quot;</span>)
+    .tickSize(-height);
+
+<span class="hljs-keyword">var</span> yAxis = d3.svg.axis()
+    .scale(y)
+    .orient(<span class="hljs-string">&quot;left&quot;</span>)
+    .ticks(<span class="hljs-number">5</span>)
+    .tickSize(-width);
+
+<span class="hljs-keyword">var</span> zoom = d3.behavior.zoom()
+    .x(x)
+    .y(y)
+    .scaleExtent([<span class="hljs-number">1</span>, <span class="hljs-number">32</span>])
+    .on(<span class="hljs-string">&quot;zoom&quot;</span>, zoomed);
+
+<span class="hljs-keyword">var</span> svg = d3.select(<span class="hljs-string">&quot;#interactive&quot;</span>).append(<span class="hljs-string">&quot;svg&quot;</span>)
+    .attr(<span class="hljs-string">&quot;viewBox&quot;</span>, <span class="hljs-string">&apos; 0 0 &apos;</span> + (width + margin.left + margin.right) + <span class="hljs-string">&apos; &apos;</span> + (height + margin.top + margin.bottom))
+  .append(<span class="hljs-string">&quot;g&quot;</span>)
+    .attr(<span class="hljs-string">&quot;transform&quot;</span>, <span class="hljs-string">&quot;translate(&quot;</span> + margin.left + <span class="hljs-string">&quot;,&quot;</span> + margin.top + <span class="hljs-string">&quot;)&quot;</span>);
+
+svg.append(<span class="hljs-string">&quot;rect&quot;</span>)
+    .attr(<span class="hljs-string">&quot;width&quot;</span>, width)
+    .attr(<span class="hljs-string">&quot;height&quot;</span>, height);
+
+<span class="hljs-keyword">var</span> xg = svg.append(<span class="hljs-string">&quot;g&quot;</span>)
+    .attr(<span class="hljs-string">&quot;class&quot;</span>, <span class="hljs-string">&quot;x axis&quot;</span>)
+    .attr(<span class="hljs-string">&quot;transform&quot;</span>, <span class="hljs-string">&quot;translate(0,&quot;</span> + height + <span class="hljs-string">&quot;)&quot;</span>)
+    .call(xAxis);
+
+<span class="hljs-keyword">var</span> yg = svg.append(<span class="hljs-string">&quot;g&quot;</span>)
+    .attr(<span class="hljs-string">&quot;class&quot;</span>, <span class="hljs-string">&quot;y axis&quot;</span>)
+    .call(yAxis);
+
+prerender.stop();
+svg.call(zoom);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">zoomed</span>(<span class="hljs-params"></span>) </span>{
+  svg.select(<span class="hljs-string">&quot;.x.axis&quot;</span>).call(xAxis);
+  svg.select(<span class="hljs-string">&quot;.y.axis&quot;</span>).call(yAxis);
+}
+</code></pre>
+    </div>
+    <script src="./js/common.js" defer="defer"></script>
+    <script src="./js/bundle.js" defer="defer"></script>
+  
+</body></html>
