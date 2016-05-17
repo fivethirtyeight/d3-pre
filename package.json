@@ -1,5 +1,5 @@
 {
-  "name": "@fivethirtyeight/d3-pre",
+  "name": "d3-pre",
   "version": "1.2.2",
   "description": "Prerender SVGs with D3",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "semistandard src/* && mocha test/test.js && mochify --transform brfs test/browser.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "brfs": "^1.4.3",

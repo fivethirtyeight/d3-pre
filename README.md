@@ -103,3 +103,8 @@ Again, this will modify the file in-place, saving any DOM modifications that
 the javascript made.
 
 [See the repo for the gulp plugin](https://github.com/fivethirtyeight/gulp-d3-pre)
+
+
+## LICENSE
+
+MIT
