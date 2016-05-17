@@ -41,6 +41,9 @@ d3.select('#interactive').append('button').text('Update').on('click', transition
 var svg = d3.select("#interactive").append("svg")
     .attr('viewBox', '0 0 ' + width + ' ' + height);
 
+// This if-statement is only necessary because the 
+// initial data is random. We don't want to 
+// render new random data on pageload.
 if (prerender.isPreprocessing) {
   svg.selectAll("path")
       .data(layers0)
