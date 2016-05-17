@@ -5,39 +5,42 @@ var setD3 = function (_d3) {
   d3 = _d3;
 };
 
-var d3_svg_axisDefaultOrient = "bottom", d3_svg_axisOrients = {
+var d3_svg_axisOrients = {
   top: 1,
   right: 1,
   bottom: 1,
   left: 1
 };
+function d3_identity (d) {
+  return d;
+}
 var ε = 1e-6;
-function d3_scaleExtent(domain) {
-  var start = domain[0], stop = domain[domain.length - 1];
+function d3_scaleExtent (domain) {
+  var start = domain[0];
+  var stop = domain[domain.length - 1];
   return start < stop ? [ start, stop ] : [ stop, start ];
 }
-function d3_scaleRange(scale) {
+function d3_scaleRange (scale) {
   return scale.rangeExtent ? scale.rangeExtent() : d3_scaleExtent(scale.range());
 }
-function d3_svg_axisX(selection, x0, x1) {
-  selection.attr("transform", function(d) {
+function d3_svg_axisX (selection, x0, x1) {
+  selection.attr('transform', function (d) {
     if (d === undefined) {
-      return "translate(0,0)";
+      return 'translate(0,0)';
     }
     var v0 = x0(d);
-    return "translate(" + (isFinite(v0) ? v0 : x1(d)) + ",0)";
+    return 'translate(' + (isFinite(v0) ? v0 : x1(d)) + ',0)';
   });
 }
-function d3_svg_axisY(selection, y0, y1) {
-  selection.attr("transform", function(d) {
+function d3_svg_axisY (selection, y0, y1) {
+  selection.attr('transform', function (d) {
     if (d === undefined) {
-      return "translate(0,0)";
+      return 'translate(0,0)';
     }
     var v0 = y0(d);
-    return "translate(0," + (isFinite(v0) ? v0 : y1(d)) + ")";
+    return 'translate(0,' + (isFinite(v0) ? v0 : y1(d)) + ')';
   });
 }
-
 
 var start = function () {
   var appendCount = -1;
@@ -75,58 +78,66 @@ var start = function () {
 
   d3.svg._axis = d3.svg.axis;
 
-  d3.svg.axis = function() {
-    var scale = d3.scale.linear(),
-        orient = "bottom",
-        innerTickSize = 6,
-        outerTickSize = 6,
-        tickPadding = 3,
-        tickArguments_ = [10],
-        tickValues = null,
-        tickFormat_;
+  d3.svg.axis = function () {
+    var scale = d3.scale.linear();
+    var orient = 'bottom';
+    var innerTickSize = 6;
+    var outerTickSize = 6;
+    var tickPadding = 3;
+    var tickArguments_ = [10];
+    var tickValues = null;
+    var tickFormat_;
 
-    function axis(g) {
-      g.each(function() {
+    function axis (g) {
+      g.each(function () {
         var g = d3.select(this);
 
         // Stash a snapshot of the new scale, and retrieve the old snapshot.
-        var scale0 = this.__chart__ || scale,
-            scale1 = this.__chart__ = scale.copy();
+        var scale0 = this.__chart__ || scale;
+        var scale1 = this.__chart__ = scale.copy();
 
         // Ticks, or domain values for ordinal scales.
-        var ticks = tickValues == null ? (scale1.ticks ? scale1.ticks.apply(scale1, tickArguments_) : scale1.domain()) : tickValues,
-            tickFormat = tickFormat_ == null ? (scale1.tickFormat ? scale1.tickFormat.apply(scale1, tickArguments_) : d3_identity) : tickFormat_,
-            tick = g.selectAll(".tick").data(ticks, scale1),
-            tickEnter = tick.enter().insert("g", ".domain").attr("class", "tick").style("opacity", ε),
-            tickExit = d3.transition(tick.exit()).style("opacity", ε).remove(),
-            tickUpdate = d3.transition(tick.order()).style("opacity", 1),
-            tickSpacing = Math.max(innerTickSize, 0) + tickPadding,
-            tickTransform;
+        var ticks = tickValues == null ? (scale1.ticks ? scale1.ticks.apply(scale1, tickArguments_) : scale1.domain()) : tickValues;
+        var tickFormat = tickFormat_ == null ? (scale1.tickFormat ? scale1.tickFormat.apply(scale1, tickArguments_) : d3_identity) : tickFormat_;
+        var tick = g.selectAll('.tick').data(ticks, scale1);
+        var tickEnter = tick.enter().insert('g', '.domain').attr('class', 'tick').style('opacity', ε);
+        var tickExit = d3.transition(tick.exit()).style('opacity', ε).remove();
+        var tickUpdate = d3.transition(tick.order()).style('opacity', 1);
+        var tickSpacing = Math.max(innerTickSize, 0) + tickPadding;
+        var tickTransform;
 
         // Domain.
-        var range = d3_scaleRange(scale1),
-            path = g.selectAll(".domain").data([0]),
-            pathUpdate = (path.enter().append("path").attr("class", "domain"), d3.transition(path));
+        var range = d3_scaleRange(scale1);
+        var path = g.selectAll('.domain').data([0]);
+        var pathUpdate = (path.enter().append('path').attr('class', 'domain'), d3.transition(path));
 
-        tickEnter.append("line");
-        tickEnter.append("text");
+        tickEnter.append('line');
+        tickEnter.append('text');
 
-        var lineEnter = tickEnter.select("line"),
-            lineUpdate = tickUpdate.select("line"),
-            text = tick.select("text").text(tickFormat),
-            textEnter = tickEnter.select("text"),
-            textUpdate = tickUpdate.select("text"),
-            sign = orient === "top" || orient === "left" ? -1 : 1,
-            x1, x2, y1, y2;
+        var lineEnter = tickEnter.select('line');
+        var lineUpdate = tickUpdate.select('line');
+        var text = tick.select('text').text(tickFormat);
+        var textEnter = tickEnter.select('text');
+        var textUpdate = tickUpdate.select('text');
+        var sign = orient === 'top' || orient === 'left' ? -1 : 1;
+        var x1, x2, y1, y2;
 
-        if (orient === "bottom" || orient === "top") {
-          tickTransform = d3_svg_axisX, x1 = "x", y1 = "y", x2 = "x2", y2 = "y2";
-          text.attr("dy", sign < 0 ? "0em" : ".71em").style("text-anchor", "middle");
-          pathUpdate.attr("d", "M" + range[0] + "," + sign * outerTickSize + "V0H" + range[1] + "V" + sign * outerTickSize);
+        if (orient === 'bottom' || orient === 'top') {
+          tickTransform = d3_svg_axisX;
+          x1 = 'x';
+          y1 = 'y';
+          x2 = 'x2';
+          y2 = 'y2';
+          text.attr('dy', sign < 0 ? '0em' : '.71em').style('text-anchor', 'middle');
+          pathUpdate.attr('d', 'M' + range[0] + ',' + sign * outerTickSize + 'V0H' + range[1] + 'V' + sign * outerTickSize);
         } else {
-          tickTransform = d3_svg_axisY, x1 = "y", y1 = "x", x2 = "y2", y2 = "x2";
-          text.attr("dy", ".32em").style("text-anchor", sign < 0 ? "end" : "start");
-          pathUpdate.attr("d", "M" + sign * outerTickSize + "," + range[0] + "H0V" + range[1] + "H" + sign * outerTickSize);
+          tickTransform = d3_svg_axisY;
+          x1 = 'y';
+          y1 = 'x';
+          x2 = 'y2';
+          y2 = 'x2';
+          text.attr('dy', '.32em').style('text-anchor', sign < 0 ? 'end' : 'start');
+          pathUpdate.attr('d', 'M' + sign * outerTickSize + ',' + range[0] + 'H0V' + range[1] + 'H' + sign * outerTickSize);
         }
 
         lineEnter.attr(y2, sign * innerTickSize);
@@ -140,8 +151,9 @@ var start = function () {
         // Exiting ticks are likewise undefined in the new scale,
         // and so can fade-out in the old scale’s position.
         if (scale1.rangeBand) {
-          var x = scale1, dx = x.rangeBand() / 2;
-          scale0 = scale1 = function(d) { return x(d) + dx; };
+          var x = scale1;
+          var dx = x.rangeBand() / 2;
+          scale0 = scale1 = function (d) { return x(d) + dx; };
         } else if (scale0.rangeBand) {
           scale0 = scale1;
         } else {
@@ -153,37 +165,37 @@ var start = function () {
       });
     }
 
-    axis.scale = function(x) {
+    axis.scale = function (x) {
       if (!arguments.length) return scale;
       scale = x;
       return axis;
     };
 
-    axis.orient = function(x) {
+    axis.orient = function (x) {
       if (!arguments.length) return orient;
-      orient = x in d3_svg_axisOrients ? x + "" : "bottom";
+      orient = x in d3_svg_axisOrients ? x + '' : 'bottom';
       return axis;
     };
 
-    axis.ticks = function() {
+    axis.ticks = function () {
       if (!arguments.length) return tickArguments_;
       tickArguments_ = arguments;
       return axis;
     };
 
-    axis.tickValues = function(x) {
+    axis.tickValues = function (x) {
       if (!arguments.length) return tickValues;
       tickValues = x;
       return axis;
     };
 
-    axis.tickFormat = function(x) {
+    axis.tickFormat = function (x) {
       if (!arguments.length) return tickFormat_;
       tickFormat_ = x;
       return axis;
     };
 
-    axis.tickSize = function(x) {
+    axis.tickSize = function (x) {
       var n = arguments.length;
       if (!n) return innerTickSize;
       innerTickSize = +x;
@@ -191,25 +203,25 @@ var start = function () {
       return axis;
     };
 
-    axis.innerTickSize = function(x) {
+    axis.innerTickSize = function (x) {
       if (!arguments.length) return innerTickSize;
       innerTickSize = +x;
       return axis;
     };
 
-    axis.outerTickSize = function(x) {
+    axis.outerTickSize = function (x) {
       if (!arguments.length) return outerTickSize;
       outerTickSize = +x;
       return axis;
     };
 
-    axis.tickPadding = function(x) {
+    axis.tickPadding = function (x) {
       if (!arguments.length) return tickPadding;
       tickPadding = +x;
       return axis;
     };
 
-    axis.tickSubdivide = function() {
+    axis.tickSubdivide = function () {
       return arguments.length && axis;
     };
 
