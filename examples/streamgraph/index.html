@@ -64,6 +64,9 @@ d3.select(<span class="hljs-string">&apos;#interactive&apos;</span>).append(<spa
 <span class="hljs-keyword">var</span> svg = d3.select(<span class="hljs-string">&quot;#interactive&quot;</span>).append(<span class="hljs-string">&quot;svg&quot;</span>)
     .attr(<span class="hljs-string">&apos;viewBox&apos;</span>, <span class="hljs-string">&apos;0 0 &apos;</span> + width + <span class="hljs-string">&apos; &apos;</span> + height);
 
+<span class="hljs-comment">// This if-statement is only necessary because the </span>
+<span class="hljs-comment">// initial data is random. We don't want to </span>
+<span class="hljs-comment">// render new random data on pageload.</span>
 <span class="hljs-keyword">if</span> (prerender.isPreprocessing) {
   svg.selectAll(<span class="hljs-string">&quot;path&quot;</span>)
       .data(layers0)
