@@ -104,6 +104,9 @@ the javascript made.
 
 [See the repo for the gulp plugin](https://github.com/fivethirtyeight/gulp-d3-pre)
 
+#### Custom Example
+
+Both of the above modules are thin wrappers around [d3-pre-renderer](https://github.com/fivethirtyeight/d3-pre-renderer). If you require more fine grain control of when and where the pre-rendering step takes place, use [d3-pre-renderer](https://github.com/fivethirtyeight/d3-pre-renderer) directly
 
 ## LICENSE
 
