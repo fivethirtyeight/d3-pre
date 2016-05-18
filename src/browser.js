@@ -1,5 +1,6 @@
 var d3;
 var dataString = 'data-pid';
+var modifiedAxis = require('./d3/axis');
 
 var setD3 = function (_d3) {
   d3 = _d3;
@@ -40,7 +41,7 @@ var start = function () {
   };
 
   d3.svg._axis = d3.svg.axis;
-  d3.svg.axis = require('./d3/axis');
+  d3.svg.axis = modifiedAxis(d3);
 
   d3.selection.prototype._append = d3.selection.prototype.append;
   d3.selection.prototype.append = newEnterAppend;
