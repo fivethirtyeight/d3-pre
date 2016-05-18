@@ -14,8 +14,8 @@ prerender.start();
 var n = 20, // number of layers
     m = 200, // number of samples per layer
     stack = d3.layout.stack().offset("wiggle"),
-    layers0 = stack(d3.range(n).map(function() { return bumpLayer(m); })),
-    layers1 = stack(d3.range(n).map(function() { return bumpLayer(m); }));
+    layers0 = require('./stream-data-0.json'), // use pre-computed data generated via
+    layers1 = require('./stream-data-1.json'); // the command: stack(d3.range(n).map(function() { return bumpLayer(m); }));
 
 var width = 960,
     height = 500;
@@ -41,15 +41,15 @@ d3.select('#interactive').append('button').text('Update').on('click', transition
 var svg = d3.select("#interactive").append("svg")
     .attr('viewBox', '0 0 ' + width + ' ' + height);
 
-// This if-statement is only necessary because the 
-// initial data is random. We don't want to 
-// render new random data on pageload.
+var layers = svg.selectAll("path")
+    .data(layers0)
+  .enter().append("path")
+    .attr("d", area);
+
+
+// Only choose initial random colors once, during pre-render step
 if (prerender.isPreprocessing) {
-  svg.selectAll("path")
-      .data(layers0)
-    .enter().append("path")
-      .attr("d", area)
-      .style("fill", function() { return color(Math.random()); });
+  layers.style("fill", function() { return color(Math.random()); });
 }
 
 function transition() {

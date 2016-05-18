@@ -10,13 +10,14 @@ headless browser, allow d3 to build the initial `SVG`, and then attach event lis
 and interactivity in the browser. The cool thing is that this library allows you to run
 exactly the same code locally and in the browser.
 
-See a simple example of this concept in action: [without pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/standard/) 
+See a simple example of this concept in action: [without pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/standard/)
 and [with pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/prerendered/) (refresh the pages to see the difference in loading).
 
 ## Examples
 
 * [Axis Pan+Zoom](http://fivethirtyeight.github.io/d3-pre/examples/axes/) ([code](./examples/axis.js))
 * [Streamgraph](http://fivethirtyeight.github.io/d3-pre/examples/streamgraph/) ([code](./examples/stream.js))
+* [Choropleth](http://fivethirtyeight.github.io/d3-pre/examples/choropleth/) ([code](./examples/choropleth.js))
 
 ##### In the wild
 
