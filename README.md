@@ -1,5 +1,5 @@
 # d3-pre
-Pre-render your d3 visualizations.
+Pre-render your visualizations, keep your same d3 code.
 
 Serving a page with inline SVG elements can give significant
 performance benefits over creating them after pageload,
@@ -7,7 +7,7 @@ especially with respect to perceived load time, and cuts down on unwanted paint 
 
 The idea behind d3-pre is that you run your d3 script locally on a
 headless browser, allow d3 to build the initial `SVG`, and then attach event listeners
-and interactivity in the browser. The cool thing is that this library allows you to run
+and interactivity in the browser. This library allows you to run
 exactly the same code locally and in the browser.
 
 See a simple example of this concept in action: [without pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/standard/)
