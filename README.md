@@ -18,6 +18,9 @@ and [with pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/preren
 * [Axis Pan+Zoom](http://fivethirtyeight.github.io/d3-pre/examples/axes/) ([code](./examples/axis.js))
 * [Streamgraph](http://fivethirtyeight.github.io/d3-pre/examples/streamgraph/) ([code](./examples/stream.js))
 
+##### In the wild
+
+* http://projects.fivethirtyeight.com/facebook-primary/
 
 ## Installation
 
