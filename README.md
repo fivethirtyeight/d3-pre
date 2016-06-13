@@ -1,13 +1,13 @@
 # d3-pre
-Pre-render your d3 visualizations.
+Pre-render your visualizations, keep the same d3 code.
 
-Serving up a page with inline SVG elements can give significant
+Serving a page with inline SVG elements can offer significant
 performance benefits over creating them after pageload,
-especially with respect to perceived load time.
+especially with respect to perceived load time, and cuts down on unwanted paint flashes.
 
-The idea behind this library is that you run your d3 script locally on a
+The idea behind d3-pre is to run your d3 script locally on a
 headless browser, allow d3 to build the initial `SVG`, and then attach event listeners
-and interactivity in the browser. The cool thing is that this library allows you to run
+and interactivity in the browser. This library allows you to run
 exactly the same code locally and in the browser.
 
 See a simple example of this concept in action: [without pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/standard/)
@@ -43,8 +43,8 @@ var Prerender = require('d3-pre');
 var prerender = Prerender(d3);
 
 
-// Then, when you start drawing svg call `prerender.start()`
-// this modifies some d3 functions to allow it to be
+// Then, when you start drawing SVG, call `prerender.start()`.
+// This modifies some d3 functions to allow it to be
 // aware of SVGs that already exist on the page.
 prerender.start();
 
@@ -59,15 +59,15 @@ prerender.start();
  *      etc. etc.
 */
 
-// If you ever want to go back to the unmodified d3
-// just call `prerender.stop()`
+// If you ever want to go back to the unmodified d3,
+// just call `prerender.stop()`.
 // This is optional and usually not necessary.
 prerender.stop();
 
 ```
 
 
-### 2. Pass your HTML through the prerendering tool.
+### 2. Pass your HTML through the pre-rendering tool.
 
 This can either be done via a build task (like gulp), or on the command line.
 
@@ -110,7 +110,7 @@ the javascript made.
 
 #### Custom Example
 
-Both of the above modules are thin wrappers around [d3-pre-renderer](https://github.com/fivethirtyeight/d3-pre-renderer). If you require more fine grain control of when and where the pre-rendering step takes place, use [d3-pre-renderer](https://github.com/fivethirtyeight/d3-pre-renderer) directly
+Both of the above modules are thin wrappers around [d3-pre-renderer](https://github.com/fivethirtyeight/d3-pre-renderer). If you require more fine-grained control of when and where the pre-rendering step takes place, use [d3-pre-renderer](https://github.com/fivethirtyeight/d3-pre-renderer) directly.
 
 ## LICENSE
 
