@@ -11,10 +11,12 @@ var setD3 = function (_d3) {
   d3.selection.enter.prototype._append = d3.selection.enter.prototype.append;
   d3.selection.prototype._html = d3.selection.prototype.html;
   d3.selection.prototype._attr = d3.selection.prototype.attr;
+  d3.selection.prototype._each = d3.selection.prototype.each;
 
   d3.selection.prototype.append = retThis;
   d3.selection.prototype.html = retThis;
   d3.selection.prototype.attr = retThis;
+  d3.selection.prototype.each = retThis;
   d3.selection.enter.prototype.append = retThis;
 };
 
@@ -66,6 +68,7 @@ var start = function () {
   d3.selection.enter.prototype.append = newAppend;
   d3.selection.prototype.html = d3.selection.prototype._html;
   d3.selection.prototype.attr = d3.selection.prototype._attr;
+  d3.selection.prototype.each = d3.selection.prototype._each;
 
 };
 
@@ -74,6 +77,7 @@ var stop = function () {
   d3.selection.prototype.append = retThis;
   d3.selection.prototype.html = retThis;
   d3.selection.prototype.attr = retThis;
+  d3.selection.prototype.each = retThis;
 };
 
 module.exports = {
