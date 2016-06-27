@@ -6,8 +6,8 @@ var setD3 = function (_d3) {
   d3 = _d3;
 };
 
+var appendCount = -1;
 var start = function () {
-  var appendCount = -1;
 
   function d3_selection_creator (name) {
     return typeof name === 'function' ? name

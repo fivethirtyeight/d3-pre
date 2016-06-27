@@ -20,8 +20,8 @@ var setD3 = function (_d3) {
   d3.selection.enter.prototype.append = retThis;
 };
 
+var appendCount = -1;
 var start = function () {
-  var appendCount = -1;
 
   function d3_selection_creator (name) {
     return typeof name === 'function' ? name
