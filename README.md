@@ -22,6 +22,7 @@ and [with pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/preren
 ##### In the wild
 
 * http://projects.fivethirtyeight.com/facebook-primary/
+* http://projects.fivethirtyeight.com/2016-election-forecast/
 
 ## Installation
 
