@@ -1,7 +1,7 @@
 # d3-pre
 A JavaScript library that pre-renders d3 visualizations into inline SVG elements, to reduce perceived page-load time and cut down on unwanted paint flashes.
 
-The pre-rendering tool uses a headless browser to turn d3 code into its resulting SVG, and inserts the markup into your HTML. Then, the `d3-pre` JavaScript library overrides `d3.append` to check  if a pre-rendered DOM node already exists before creating a new one. This approach allows to use pre-rendered SVG without changing your visualization code.
+The pre-rendering tool uses a headless browser to turn d3 code into its resulting SVG, and inserts the markup into your HTML. Then, the `d3-pre` JavaScript library overrides `d3.append` to check  if a pre-rendered DOM node already exists before creating a new one. This approach allows you to use pre-rendered SVG without changing your visualization code.
 
 See an example of the speed benefits of using inline SVG over SVG generated in the client  by refreshing this page [without pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/standard/)
 and [with pre-rendering](http://fivethirtyeight.github.io/d3-pre/examples/prerendered/).
