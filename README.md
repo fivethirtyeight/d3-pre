@@ -25,7 +25,7 @@ npm install --save d3-pre
 
 ## Usage
 
-There are two things that you need to do to use this library.
+There are two things that you need to do to use this library:
 
 ### 1. Include d3-pre in your javascript
 
@@ -112,7 +112,7 @@ The following options may be passed to the gulp plugin:
 
 #### Advanced usage
 
-Both of the above modules are thin wrappers around [d3-pre-renderer](https://github.com/fivethirtyeight/d3-pre-renderer). If you require more fine-grained control of when and where the pre-rendering step takes place, use [d3-pre-renderer](https://github.com/fivethirtyeight/d3-pre-renderer) directly.
+Both of the above modules are thin wrappers around [d3-pre-renderer](https://github.com/fivethirtyeight/d3-pre-renderer). If you require more fine-grained control of when and where the pre-rendering step takes place, use d3-pre-renderer directly.
 
 ## LICENSE
 
