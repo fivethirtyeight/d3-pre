@@ -118,6 +118,6 @@ Both of the above modules are thin wrappers around [d3-pre-renderer](https://git
 
 * [Matthew Conlen](https://github.com/mathisonian)
 
-## LICENSE
+## License
 
 MIT
