@@ -114,6 +114,10 @@ The following options may be passed to the gulp plugin:
 
 Both of the above modules are thin wrappers around [d3-pre-renderer](https://github.com/fivethirtyeight/d3-pre-renderer). If you require more fine-grained control of when and where the pre-rendering step takes place, use d3-pre-renderer directly.
 
+## Contributors
+
+* [Matthew Conlen](https://github.com/mathisonian)
+
 ## LICENSE
 
 MIT
