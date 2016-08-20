@@ -10,15 +10,9 @@ module.exports = function (count) {
   };
   var start = function () {
 
-    function d3_selection_creator (name) {
-      return typeof name === 'function' ? name
-          : (name = d3.ns.qualify(name)).local ? function () { return this.ownerDocument.createElementNS(name.space, name.local); }
-          : function () { return this.ownerDocument.createElementNS(this.namespaceURI, name); };
-    }
-
     var newEnterAppend = function (name) {
       var ogName = name;
-      name = d3_selection_creator(name);
+      name = typeof name === 'function' ? name : d3.creator(name);
       var isEmpty = -1;
 
       return this.select(function () {
@@ -41,14 +35,14 @@ module.exports = function (count) {
       });
     };
 
-    d3.svg._axis = d3.svg.axis;
-    d3.svg.axis = modifiedAxis(d3);
+    // d3.svg._axis = d3.svg.axis;
+    // d3.svg.axis = modifiedAxis(d3);
 
     d3.selection.prototype._append = d3.selection.prototype.append;
     d3.selection.prototype.append = newEnterAppend;
 
-    d3.selection.enter.prototype._append = d3.selection.enter.prototype.append;
-    d3.selection.enter.prototype.append = newEnterAppend;
+    // d3.selection.enter.prototype._append = d3.selection.enter.prototype.append;
+    // d3.selection.enter.prototype.append = newEnterAppend;
 
     d3.selection.prototype._data = d3.selection.prototype.data;
 
@@ -83,10 +77,10 @@ module.exports = function (count) {
   };
 
   var stop = function () {
-    d3.selection.enter.prototype.append = d3.selection.enter.prototype._append;
+    // d3.selection.enter.prototype.append = d3.selection.enter.prototype._append;
     d3.selection.prototype.append = d3.selection.prototype._append;
     d3.selection.prototype.data = d3.selection.prototype._data;
-    d3.svg.axis = d3.svg._axis;
+    // d3.svg.axis = d3.svg._axis;
   };
 
   return {

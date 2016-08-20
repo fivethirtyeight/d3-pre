@@ -4,7 +4,7 @@
   "description": "Prerender SVGs with D3",
   "main": "index.js",
   "scripts": {
-    "test": "semistandard src/**/* && mocha test/test.js"
+    "test": "semistandard src/**/* && mocha test/test.js && mochify --transform brfs test/browser.js"
   },
   "author": "",
   "license": "MIT",
