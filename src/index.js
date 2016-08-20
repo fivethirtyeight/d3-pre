@@ -5,18 +5,18 @@ var preprocess = require('./preprocess');
 module.exports = function (_d3, options) {
   options = options || {};
 
-  var current = browser;
+  var current = browser();
 
   var isPreprocessing = false;
 
   if (options.mode) {
     if (options.mode === 'preprocess') {
-      current = preprocess;
+      current = preprocess();
       isPreprocessing = true;
     }
   } else if (navigator.userAgent && navigator.userAgent.indexOf('Electron') > -1) {
     // Electron
-    current = preprocess;
+    current = preprocess();
     isPreprocessing = true;
   }
 

@@ -4,14 +4,14 @@
   "description": "Prerender SVGs with D3",
   "main": "index.js",
   "scripts": {
-    "test": "semistandard src/**/* && mocha test/test.js && mochify --transform brfs test/browser.js"
+    "test": "semistandard src/**/* && mocha test/test.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "brfs": "^1.4.3",
-    "d3": "^3.5.14",
+    "d3": "^4.2.2",
     "expect.js": "^0.3.1",
     "jsdom": "^3.1.2",
     "lodash": "^4.2.1",
