@@ -2,6 +2,23 @@
 var dataString = 'data-pid';
 var modifiedAxis = require('./d3/axis');
 
+var isV4OrBetter = function (d3) {
+  return (d3.version && (+d3.version.split('.')[0] >= 4));
+};
+
+var d3_selection_creator = function (d3, name) {
+  return typeof name === 'function' ? name
+      : (name = d3.ns.qualify(name)).local ? function () { return this.ownerDocument.createElementNS(name.space, name.local); }
+      : function () { return this.ownerDocument.createElementNS(this.namespaceURI, name); };
+};
+
+var mapAppendName = function (d3, name) {
+  if (isV4OrBetter(d3)) {
+    return typeof name === 'function' ? name : d3.creator(name);
+  }
+  return d3_selection_creator(d3, name);
+}
+
 module.exports = function (count) {
   var d3;
   var appendCount = count || -1;
@@ -12,7 +29,7 @@ module.exports = function (count) {
 
     var newEnterAppend = function (name) {
       var ogName = name;
-      name = typeof name === 'function' ? name : d3.creator(name);
+      name = mapAppendName(d3, name);
       var isEmpty = -1;
 
       return this.select(function () {
@@ -35,14 +52,16 @@ module.exports = function (count) {
       });
     };
 
-    // d3.svg._axis = d3.svg.axis;
-    // d3.svg.axis = modifiedAxis(d3);
+    if (!isV4OrBetter(d3)) {
+      d3.svg._axis = d3.svg.axis;
+      d3.svg.axis = modifiedAxis(d3);
+      d3.selection.enter.prototype._append = d3.selection.enter.prototype.append;
+      d3.selection.enter.prototype.append = newEnterAppend;
+    }
 
     d3.selection.prototype._append = d3.selection.prototype.append;
     d3.selection.prototype.append = newEnterAppend;
 
-    // d3.selection.enter.prototype._append = d3.selection.enter.prototype.append;
-    // d3.selection.enter.prototype.append = newEnterAppend;
 
     d3.selection.prototype._data = d3.selection.prototype.data;
 
@@ -77,10 +96,13 @@ module.exports = function (count) {
   };
 
   var stop = function () {
-    // d3.selection.enter.prototype.append = d3.selection.enter.prototype._append;
+
     d3.selection.prototype.append = d3.selection.prototype._append;
     d3.selection.prototype.data = d3.selection.prototype._data;
-    // d3.svg.axis = d3.svg._axis;
+    if (!isV4OrBetter(d3)) {
+      d3.selection.enter.prototype.append = d3.selection.enter.prototype._append;
+      d3.svg.axis = d3.svg._axis;
+    }
   };
 
   return {
