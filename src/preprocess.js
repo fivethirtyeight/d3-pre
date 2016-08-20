@@ -1,20 +1,4 @@
-
-var isV4OrBetter = function (d3) {
-  return (d3.version && (+d3.version.split('.')[0] >= 4));
-};
-
-var d3_selection_creator = function (d3, name) {
-  return typeof name === 'function' ? name
-      : (name = d3.ns.qualify(name)).local ? function () { return this.ownerDocument.createElementNS(name.space, name.local); }
-      : function () { return this.ownerDocument.createElementNS(this.namespaceURI, name); };
-};
-
-var mapAppendName = function (d3, name) {
-  if (isV4OrBetter(d3)) {
-    return typeof name === 'function' ? name : d3.creator(name);
-  }
-  return d3_selection_creator(d3, name);
-}
+var utils = require('./utils');
 
 module.exports = function (count) {
   var appendCount = count || -1;
@@ -37,7 +21,7 @@ module.exports = function (count) {
     d3.selection.prototype.attr = retThis;
     d3.selection.prototype.each = retThis;
 
-    if (!isV4OrBetter(d3)) {
+    if (!utils.isV4OrBetter(d3)) {
       d3.selection.enter.prototype._append = d3.selection.enter.prototype.append;
       d3.selection.enter.prototype.append = retThis;
     }
@@ -47,7 +31,7 @@ module.exports = function (count) {
 
     var newAppend = function (name) {
       var ogName = name;
-      name = mapAppendName(d3, name);
+      name = utils.mapAppendName(d3, name);
 
       var isEmpty = -1;
 
@@ -84,14 +68,14 @@ module.exports = function (count) {
     d3.selection.prototype.html = d3.selection.prototype._html;
     d3.selection.prototype.attr = d3.selection.prototype._attr;
     d3.selection.prototype.each = d3.selection.prototype._each;
-    if (!isV4OrBetter(d3)) {
+    if (!utils.isV4OrBetter(d3)) {
       d3.selection.enter.prototype.append = newAppend;
     }
 
   };
 
   var stop = function () {
-    if (!isV4OrBetter(d3)) {
+    if (!utils.isV4OrBetter(d3)) {
       d3.selection.enter.prototype.append = retThis;
     }
 
