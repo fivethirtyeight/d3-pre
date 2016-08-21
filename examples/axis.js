@@ -2,7 +2,7 @@
 
 var d3 = require('d3');
 // Require the library and give it a reference to d3
-var Prerender = require('d3-pre');
+var Prerender = require('..');
 var prerender = Prerender(d3);
 
 
@@ -11,37 +11,34 @@ var prerender = Prerender(d3);
 // aware of SVGs that already exist on the page.
 prerender.start();
 
-
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var x = d3.scale.linear()
+var x = d3.scaleLinear()
     .domain([-width / 2, width / 2])
     .range([0, width]);
 
-var y = d3.scale.linear()
+var y = d3.scaleLinear()
     .domain([-height / 2, height / 2])
     .range([height, 0]);
 
-var xAxis = d3.svg.axis()
+var xAxis = d3.axisBottom()
     .scale(x)
-    .orient("bottom")
     .tickSize(-height);
 
-var yAxis = d3.svg.axis()
+var yAxis = d3.axisLeft()
     .scale(y)
-    .orient("left")
     .ticks(5)
     .tickSize(-width);
 
-var zoom = d3.behavior.zoom()
-    .x(x)
-    .y(y)
+var zoom = d3.zoom()
+    // .x(x)
+    // .y(y)
     .scaleExtent([1, 32])
     .on("zoom", zoomed);
 
-var svg = d3.select("#interactive").append("svg")
+var svg = d3.select("body").append("svg")
     .attr("viewBox", ' 0 0 ' + (width + margin.left + margin.right) + ' ' + (height + margin.top + margin.bottom))
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");

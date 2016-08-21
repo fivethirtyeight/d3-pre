@@ -1,0 +1,18 @@
+.axis path {
+  display: none;
+}
+
+.axis line {
+  stroke-opacity: 0.3;
+  shape-rendering: crispEdges;
+}
+
+.zoom {
+  fill: none;
+  pointer-events: all;
+}
+
+.view {
+  fill: none;
+  stroke: #000;
+}
