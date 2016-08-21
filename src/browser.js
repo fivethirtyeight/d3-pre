@@ -1,6 +1,6 @@
 
 var dataString = 'data-pid';
-var modifiedAxis = require('./d3/axis');
+// var modifiedAxis = require('./d3/axis');
 var utils = require('./utils');
 
 module.exports = function (count) {

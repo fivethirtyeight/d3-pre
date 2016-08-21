@@ -8,6 +8,8 @@ var jsdom = require('jsdom');
 var Prerender = require('..');
 var _ = require('lodash');
 
+console.log(d3);
+
 var cleanString = function (str) {
   return str.replace(/\s+/g, ' ').trim();
 };

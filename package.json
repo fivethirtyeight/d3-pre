@@ -4,13 +4,16 @@
   "description": "Prerender SVGs with D3",
   "main": "index.js",
   "scripts": {
-    "test": "semistandard src/**/* && mocha test/test.js && mochify --transform brfs test/browser.js"
+    "test": "semistandard src/**/* && mocha test/test.js && mochify --transform brfs test/browser.js",
+    "example-axis": "budo examples/v4.js -- -t [ browserify-css --autoInject=true ]"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "brfs": "^1.4.3",
+    "browserify-css": "^0.9.1",
+    "budo": "^9.0.0",
     "d3": "^4.2.2",
     "expect.js": "^0.3.1",
     "jsdom": "^3.1.2",
