@@ -61,7 +61,7 @@ prerender.stop();
 ```
 
 
-### 2. Pass your HTML through the pre-rendering tool.
+### 2. Pass your HTML through the pre-rendering tool
 
 This can be done via a build task (like gulp), or on the command line. To provide control over which DOM modifications are saved back to the HTML file, you can add the following data-attributes in the HTML:
 * `data-prerender-ignore`: Any modifications that happen inside a node with this attribute will be ignored.
