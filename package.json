@@ -2,14 +2,14 @@
   "name": "d3-pre",
   "version": "1.3.0",
   "description": "Prerender SVGs with D3",
+  "repository": "fivethirtyeight/d3-pre",
   "main": "index.js",
   "scripts": {
     "test": "semistandard src/**/* && mocha test/test.js && mochify --transform brfs test/browser.js",
     "example-axis": "budo examples/v4.js -- -t [ browserify-css --autoInject=true ]"
   },
-  "author": "",
+  "author": "FiveThirtyEight",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
     "brfs": "^1.4.3",
     "browserify-css": "^0.9.1",
